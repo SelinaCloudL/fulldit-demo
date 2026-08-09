@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Audio demos for Beyond Reconstruction: Full-Context Generative DiT for Music Generation.">
+  <meta name="theme-color" content="#f6f7f9">
+  <title>FullDiT — Music Generation Demos</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to audio demos</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="FullDiT home">
+      <span class="brand-mark" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i>
+      </span>
+      <span>FullDiT</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#overview">Overview</a>
+      <a href="#generations">Generations</a>
+      <a href="#ablations">Ablations</a>
+      <a href="#reconstruction">Reconstruction</a>
+      <a class="nav-paper" href="paper/full-context-generative-dit.pdf">Paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">Music generation · Audio demo</p>
+        <h1>Beyond Reconstruction:<br><span>Full-Context Generative DiT</span> for Music Generation</h1>
+        <p class="hero-summary">
+          FullDiT treats acoustic rendering as full-context generation from an imperfect discrete plan,
+          combining frame-aligned RVQ conditions, independently encoded lyrics and captions, and
+          non-causal full-song context.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#generations">Listen to demos</a>
+          <a class="button button-secondary" href="paper/full-context-generative-dit.pdf">Read the paper <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="authors" aria-label="Authors and affiliations">
+          <p>
+            Yunjia Li<sup>1,2</sup>, Menglin Wu<sup>2</sup>, Junyu Dai<sup>2</sup>,
+            Xinyue Fan<sup>2</sup>, Jianwei Yu<sup>2</sup>, Huaicheng Zhang<sup>2</sup>,
+            Han Zhao<sup>2</sup>, Xiangang Li<sup>2</sup>, Weiqin Li<sup>2</sup>,
+            Yufei Shi<sup>2</sup>, Haoxu Wang<sup>2</sup>, Cheng Wen<sup>2</sup>,
+            Sitong Zhao<sup>2</sup>, Qixi Zheng<sup>2</sup>, Haina Zhu<sup>2</sup>, Wei Li<sup>1</sup>
+          </p>
+          <p class="affiliations"><sup>1</sup> College of Computer Science and Artificial Intelligence, Fudan University &nbsp;·&nbsp; <sup>2</sup> Alibaba Token Foundry</p>
+        </div>
+
+        <div class="hero-metrics" aria-label="Selected results">
+          <div><strong>+0.77</strong><span>ViSQOL under synthetic corruption</span></div>
+          <div><strong>69.7%</strong><span>non-tied preference over no EMDC</span></div>
+          <div><strong>15 / 18</strong><span>automatic metrics led</span></div>
+          <div><strong>Top 3</strong><span>public vocals leaderboard</span></div>
+        </div>
+
+        <aside class="leaderboard-highlight" aria-labelledby="leaderboard-highlight-title">
+          <div class="highlight-copy">
+            <p class="section-kicker">Public benchmark</p>
+            <h3 id="leaderboard-highlight-title">Top-three on Music with Vocals</h3>
+            <p>Our submitted system, Lucky Dolphin, ranks third by point estimate on the Artificial Analysis public leaderboard.</p>
+          </div>
+          <figure class="paper-figure leaderboard-figure">
+            <img src="assets/leaderboard.jpg" alt="Artificial Analysis Music with Vocals Leaderboard with Lucky Dolphin highlighted in third place." loading="eager">
+            <figcaption>Archived public leaderboard snapshot: Lucky Dolphin ranks third by point estimate.</figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section overview" id="overview">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="section-kicker">Method</p>
+          <h2>Rendering beyond reconstruction</h2>
+        </div>
+        <p>
+          Error-Matched Distractor Conditioning (EMDC) exposes the renderer to realistic codec-token
+          mistakes without changing the acoustic target. Four-way classifier-free guidance independently
+          controls codec, lyric, and caption conditioning at inference time.
+        </p>
+      </div>
+
+      <figure class="paper-figure architecture-figure">
+        <img src="assets/architecture.png" alt="FullDiT architecture showing caption, lyrics, codec tokens, the full-context generative DiT, and recovered waveform." loading="lazy">
+        <figcaption>FullDiT acoustic renderer and Error-Matched Distractor Conditioning.</figcaption>
+      </figure>
+
+      <div class="concept-grid">
+        <article>
+          <span class="concept-number">01</span>
+          <h3>Full-song context</h3>
+          <p>Non-causal self-attention models the complete acoustic latent sequence rather than isolated local windows.</p>
+        </article>
+        <article>
+          <span class="concept-number">02</span>
+          <h3>Error-matched training</h3>
+          <p>Codebook-specific replacement rates and cosine-KNN distractors mimic plausible language-model errors.</p>
+        </article>
+        <article>
+          <span class="concept-number">03</span>
+          <h3>Independent guidance</h3>
+          <p>4-CFG separates codec, lyric, and caption guidance increments for controllable rendering.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="generations">
+      <div class="section-heading">
+        <p class="section-kicker">Full-length samples</p>
+        <h2>Complete music generations</h2>
+        <p>Listen to the full tracks. Audio loads only after you press play.</p>
+      </div>
+
+      <div class="generation-grid comparison-grid comparison-grid-two">
+        <article class="comparison-card generation-card comparison-primary">
+            <div class="model-label"><span>01</span><em>Complete vocal song · <time datetime="PT3M38S">3:38</time></em></div>
+            <h3>I Am Free</h3>
+            <p class="prompt"><strong>Prompt.</strong> Alternative metal driven by thick, distorted guitars, thunderous drums, gritty male vocals, and an anthemic narrative about breaking free and reclaiming one's identity.</p>
+            <audio controls preload="none" aria-label="Play I Am Free">
+              <source src="audio/i-am-free.mp3" type="audio/mpeg">
+              Your browser does not support MP3 playback.
+            </audio>
+        </article>
+
+        <article class="comparison-card generation-card">
+            <div class="model-label"><span>02</span><em>Complete vocal song · <time datetime="PT4M6S">4:06</time></em></div>
+            <h3>Still Waiting</h3>
+            <p class="prompt"><strong>Prompt.</strong> An intimate midnight vocal jazz track exploring the theme of lost love through smoky vocals and a sparse acoustic arrangement.</p>
+            <audio controls preload="none" aria-label="Play Still Waiting">
+              <source src="audio/still-waiting.mp3" type="audio/mpeg">
+              Your browser does not support MP3 playback.
+            </audio>
+        </article>
+
+        <article class="comparison-card generation-card">
+            <div class="model-label"><span>03</span><em>Complete vocal song · <time datetime="PT2M35S">2:35</time></em></div>
+            <h3>New Year Fireworks</h3>
+            <p class="prompt"><strong>Prompt.</strong> An upbeat reggae-pop New Year's Eve celebration driven by acoustic guitar upstrokes, a syncopated electric bassline, punchy drums, bright brass, and a cheerful male lead vocal, with an energetic and uplifting mood.</p>
+            <audio controls preload="none" aria-label="Play New Year Fireworks">
+              <source src="audio/new-year-fireworks.mp3" type="audio/mpeg">
+              Your browser does not support MP3 playback.
+            </audio>
+        </article>
+
+        <article class="comparison-card generation-card">
+            <div class="model-label"><span>04</span><em>Instrumental · <time datetime="PT1M19S">1:19</time></em></div>
+            <h3>Changing Pace</h3>
+            <p class="prompt"><strong>Prompt.</strong> A mellow contemporary R&amp;B instrumental built from syncopated electric bass, laid-back drums, rhythmic electric-piano chords, warm synth pads, and seamless shifts between standard and double-time feels, ending in a slow fade-out.</p>
+            <audio controls preload="none" aria-label="Play Changing Pace">
+              <source src="audio/changing-pace.mp3" type="audio/mpeg">
+              Your browser does not support MP3 playback.
+            </audio>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="ablations">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="section-kicker">Controlled comparison</p>
+          <h2>What changes the rendering?</h2>
+        </div>
+        <p>
+          Prompt, lyrics, upstream LM codec tokens, duration, random seed, sampler, and guidance tuple
+          <code>(1, 2, 1)</code> are fixed. Only the FullDiT configuration changes.
+        </p>
+      </div>
+
+      <div class="sample-context">
+        <div>
+          <span class="context-label">Shared prompt</span>
+          <p>A dreamy Folk Pop track evoking the feeling of falling asleep under the stars, featuring a soft male vocal and gentle acoustic instrumentation.</p>
+        </div>
+        <dl>
+          <div><dt>Duration</dt><dd>3:17</dd></div>
+          <div><dt>Vocal</dt><dd>English · male</dd></div>
+          <div><dt>Tempo</dt><dd>75 BPM</dd></div>
+          <div><dt>Key</dt><dd>G major</dd></div>
+        </dl>
+      </div>
+
+      <div class="comparison-grid comparison-grid-four">
+        <article class="comparison-card comparison-primary">
+          <div class="model-label"><span>M1</span><em>Complete</em></div>
+          <h3>FullDiT</h3>
+          <p>Full-song context, renderer-side caption and lyrics, and EMDC.</p>
+          <audio controls preload="none" aria-label="Play M1 FullDiT">
+            <source src="audio/sample-a-m1.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+        <article class="comparison-card">
+          <div class="model-label"><span>M2a</span><em>Ablation</em></div>
+          <h3>Local context</h3>
+          <p>Local 30-second training context; otherwise matched to M1.</p>
+          <audio controls preload="none" aria-label="Play M2a local-context ablation">
+            <source src="audio/sample-a-m2a-local30s.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+        <article class="comparison-card">
+          <div class="model-label"><span>M2b</span><em>Ablation</em></div>
+          <h3>No renderer text</h3>
+          <p>No renderer-side caption or lyric conditions; otherwise matched to M1.</p>
+          <audio controls preload="none" aria-label="Play M2b no-text ablation">
+            <source src="audio/sample-a-m2b-no-text.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+        <article class="comparison-card">
+          <div class="model-label"><span>M3</span><em>Ablation</em></div>
+          <h3>No EMDC</h3>
+          <p>No Error-Matched Distractor Conditioning; otherwise matched to M1.</p>
+          <audio controls preload="none" aria-label="Play M3 no-EMDC ablation">
+            <source src="audio/sample-a-m3-no-emdc.mp3" type="audio/mpeg">
+          </audio>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section section-dark" id="reconstruction">
+      <div class="section-heading">
+        <p class="section-kicker">Paired reconstruction</p>
+        <h2>Suno V5.5 original vs. FullDiT</h2>
+        <p>Each pair has matching duration. Switch between the two players for a direct comparison.</p>
+      </div>
+
+      <div class="pair-block">
+        <div class="pair-heading">
+          <div><span>Pair 01</span><h3>Instrumental</h3></div>
+        </div>
+        <div class="comparison-grid comparison-grid-two">
+          <article class="comparison-card">
+            <div class="model-label"><span>A</span><em>Reference</em></div>
+            <h4>Suno V5.5 original</h4>
+            <audio controls preload="none" aria-label="Play instrumental Suno V5.5 original">
+              <source src="audio/instrumental-suno-v5.5-original.mp3" type="audio/mpeg">
+            </audio>
+          </article>
+          <article class="comparison-card comparison-primary">
+            <div class="model-label"><span>B</span><em>Reconstruction</em></div>
+            <h4>FullDiT reconstruction</h4>
+            <audio controls preload="none" aria-label="Play instrumental FullDiT reconstruction">
+              <source src="audio/instrumental-fulldit-reconstruction.mp3" type="audio/mpeg">
+            </audio>
+          </article>
+        </div>
+      </div>
+
+      <div class="pair-block">
+        <div class="pair-heading">
+          <div><span>Pair 02</span><h3>Vocal</h3></div>
+        </div>
+        <div class="comparison-grid comparison-grid-two">
+          <article class="comparison-card">
+            <div class="model-label"><span>A</span><em>Reference</em></div>
+            <h4>Suno V5.5 original</h4>
+            <audio controls preload="none" aria-label="Play vocal Suno V5.5 original">
+              <source src="audio/vocal-suno-v5.5-original.mp3" type="audio/mpeg">
+            </audio>
+          </article>
+          <article class="comparison-card comparison-primary">
+            <div class="model-label"><span>B</span><em>Reconstruction</em></div>
+            <h4>FullDiT reconstruction</h4>
+            <audio controls preload="none" aria-label="Play vocal FullDiT reconstruction">
+              <source src="audio/vocal-fulldit-reconstruction.mp3" type="audio/mpeg">
+            </audio>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="section-heading">
+        <p class="section-kicker">Results</p>
+        <h2>External evaluation</h2>
+        <p>Automatic comparisons across leading music-generation systems on a shared multilingual set of vocal&nbsp;music.</p>
+      </div>
+      <div class="results-grid">
+        <div class="results-table-wrap" role="region" aria-label="Automatic evaluation results" tabindex="0">
+          <table class="results-table">
+            <caption>Automatic comparison of six music-generation systems on a shared multilingual set of vocal&nbsp;music, evaluated with SongBench, SongEval, Audiobox, and CMI-RM. Best result in each row is bold.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Evaluator</th>
+                <th scope="col">Metric</th>
+                <th scope="col">Ours</th>
+                <th scope="col">Suno 5.5</th>
+                <th scope="col">Suno 5</th>
+                <th scope="col">Mureka 8</th>
+                <th scope="col">Lyria 3 Pro</th>
+                <th scope="col">MiniMax 2.6</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-start">
+                <th scope="rowgroup" rowspan="7">SongBench</th>
+                <th scope="row">Melody</th>
+                <td><strong>7.2001</strong></td><td>6.6939</td><td>6.9202</td><td>7.0660</td><td>7.0377</td><td>6.7245</td>
+              </tr>
+              <tr><th scope="row">Arrangement</th><td><strong>7.3879</strong></td><td>6.8406</td><td>7.0805</td><td>7.2601</td><td>7.1511</td><td>6.8167</td></tr>
+              <tr><th scope="row">Musicality</th><td><strong>6.3678</strong></td><td>5.8297</td><td>6.0096</td><td>6.2559</td><td>6.1810</td><td>5.8823</td></tr>
+              <tr><th scope="row">Vocal</th><td>7.6234</td><td>7.0981</td><td>7.3160</td><td><strong>7.6248</strong></td><td>7.4560</td><td>7.2513</td></tr>
+              <tr><th scope="row">Instrument</th><td><strong>7.3517</strong></td><td>7.0080</td><td>7.1487</td><td>7.2585</td><td>7.0583</td><td>6.8458</td></tr>
+              <tr><th scope="row">Mixing</th><td><strong>7.3047</strong></td><td>7.0332</td><td>7.1101</td><td>7.1433</td><td>7.0093</td><td>6.7397</td></tr>
+              <tr><th scope="row">Structure</th><td>6.9650</td><td>6.6158</td><td>6.7363</td><td>7.0237</td><td><strong>7.0565</strong></td><td>6.5637</td></tr>
+
+              <tr class="group-start">
+                <th scope="rowgroup" rowspan="5">SongEval</th>
+                <th scope="row">Coherence</th>
+                <td><strong>4.5094</strong></td><td>4.2905</td><td>4.3278</td><td>4.3870</td><td>4.4673</td><td>4.2772</td>
+              </tr>
+              <tr><th scope="row">Musicality</th><td><strong>4.4098</strong></td><td>4.1547</td><td>4.1970</td><td>4.2875</td><td>4.3466</td><td>4.1781</td></tr>
+              <tr><th scope="row">Memorability</th><td><strong>4.4663</strong></td><td>4.2123</td><td>4.2473</td><td>4.3680</td><td>4.4153</td><td>4.2180</td></tr>
+              <tr><th scope="row">Clarity</th><td><strong>4.3838</strong></td><td>4.1246</td><td>4.1741</td><td>4.2431</td><td>4.3099</td><td>4.1448</td></tr>
+              <tr><th scope="row">Naturalness</th><td><strong>4.2600</strong></td><td>4.0046</td><td>4.0679</td><td>4.1767</td><td>4.2021</td><td>3.9919</td></tr>
+
+              <tr class="group-start">
+                <th scope="rowgroup" rowspan="4">Audiobox</th>
+                <th scope="row">Content Enjoyment</th>
+                <td><strong>7.7089</strong></td><td>7.5289</td><td>7.5507</td><td>7.5921</td><td>7.6950</td><td>7.6844</td>
+              </tr>
+              <tr><th scope="row">Content Usefulness</th><td><strong>7.9989</strong></td><td>7.9535</td><td>7.8020</td><td>7.8634</td><td>7.8919</td><td>7.9578</td></tr>
+              <tr><th scope="row">Prod. Complexity</th><td><strong>6.8774</strong></td><td>6.6486</td><td>6.8118</td><td>6.8768</td><td>6.7561</td><td>6.7514</td></tr>
+              <tr><th scope="row">Production Quality</th><td><strong>8.2986</strong></td><td>8.2083</td><td>8.1411</td><td>8.1098</td><td>8.2780</td><td>8.2923</td></tr>
+
+              <tr class="group-start">
+                <th scope="rowgroup" rowspan="2">CMI-RM</th>
+                <th scope="row">Alignment</th>
+                <td>2.1786</td><td>1.9216</td><td>1.9119</td><td><strong>2.3089</strong></td><td>2.0377</td><td>2.1546</td>
+              </tr>
+              <tr><th scope="row">Musicality</th><td><strong>2.7611</strong></td><td>2.3665</td><td>2.3756</td><td>2.7590</td><td>2.5280</td><td>2.6661</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <strong>FullDiT</strong>
+    </div>
+    <p>Research demo for “Beyond Reconstruction: Full-Context Generative DiT for Music Generation.”</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
