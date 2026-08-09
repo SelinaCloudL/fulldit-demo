@@ -27,9 +27,10 @@ Using a local HTTP server is recommended because browser behavior for audio load
 - `script.js`: exclusive playback and active-player highlighting
 - `audio/`: twelve stereo MP3 demos
 - `assets/`: architecture and evaluation figures
-- `paper/`: named preprint PDF
 - `SHA256SUMS`: checksums of all MP3 files
 - `PUBLISHING.md`: GitHub and GitHub Pages instructions
+
+The paper link is intentionally omitted until the arXiv URL is available.
 
 ## Audio behavior
 

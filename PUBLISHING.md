@@ -50,7 +50,7 @@ GitHub 不接受账号密码作为命令行密码。推送时可使用浏览器�
 1. 打开刚创建的空仓库。
 2. 点击 `uploading an existing file` 或 `Add file` → `Upload files`。
 3. 将 `github_demo` **里面的所有内容**拖入网页，而不是把外层目录本身作为一级目录。
-4. 确认 `index.html` 位于仓库根目录，且 `audio/`、`assets/`、`paper/` 目录结构没有被打散。
+4. 确认 `index.html` 位于仓库根目录，且 `audio/`、`assets/` 目录结构没有被打散。
 5. 填写提交说明并点击 `Commit changes`。
 
 ## 4. 开启 GitHub Pages
