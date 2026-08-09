@@ -6,7 +6,7 @@ The folder is self-contained and can be published directly with GitHub Pages. It
 
 Repository: <https://github.com/SelinaCloudL/fulldit-demo>
 
-Demo URL after GitHub Pages deploys: <https://SelinaCloudL.github.io/fulldit-demo/>
+Demo URL: <https://SelinaCloudL.github.io/fulldit-demo/>
 
 ## Preview locally
 
@@ -30,7 +30,6 @@ Using a local HTTP server is recommended because browser behavior for audio load
 - `paper/`: named preprint PDF
 - `SHA256SUMS`: checksums of all MP3 files
 - `PUBLISHING.md`: GitHub and GitHub Pages instructions
-- `.github/workflows/pages.yml`: GitHub Pages deployment workflow
 
 ## Audio behavior
 

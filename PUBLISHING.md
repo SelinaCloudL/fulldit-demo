@@ -30,6 +30,8 @@ git add .
 git commit -m "Add FullDiT demo page"
 git remote add origin https://github.com/SelinaCloudL/fulldit-demo.git
 git push -u origin main
+git branch gh-pages main
+git push origin gh-pages
 ```
 
 如果 Git 提示缺少身份信息，先执行：
@@ -53,20 +55,19 @@ GitHub 不接受账号密码作为命令行密码。推送时可使用浏览器�
 
 ## 4. 开启 GitHub Pages
 
-仓库包含 `.github/workflows/pages.yml`，push 到 `main` 后会通过 GitHub Actions 发布静态页面。
-
-如果 GitHub 没有自动启用 Pages，请手动开启：
-
-1. 进入仓库的 `Settings`。
-2. 左侧选择 `Pages`。
-3. 在 `Build and deployment` 下将 Source 设为 `GitHub Actions`。
-5. 点击 `Save`。
-
-部署完成后，页面地址通常为：
+本仓库使用 `gh-pages` 分支发布静态页面。首次推送 `gh-pages` 分支后，GitHub Pages 会发布到：
 
 ```text
 https://SelinaCloudL.github.io/fulldit-demo/
 ```
+
+如果页面没有自动出现，请手动检查 Pages 设置：
+
+1. 进入仓库的 `Settings`。
+2. 左侧选择 `Pages`。
+3. 在 `Build and deployment` 下将 Source 设为 `Deploy from a branch`。
+4. Branch 选择 `gh-pages`，Folder 选择 `/(root)`。
+5. 点击 `Save`。
 
 第一次部署通常需要几分钟。可以在仓库的 `Actions` 页面查看部署状态。
 
@@ -77,7 +78,8 @@ https://SelinaCloudL.github.io/fulldit-demo/
 ```bash
 git add .
 git commit -m "Update demo page"
-git push
+git push origin main
+git push origin main:gh-pages
 ```
 
 GitHub Pages 会自动重新部署。
