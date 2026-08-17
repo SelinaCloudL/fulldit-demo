@@ -30,7 +30,7 @@ Using a local HTTP server is recommended because browser behavior for audio load
 - `SHA256SUMS`: checksums of all MP3 files
 - `PUBLISHING.md`: GitHub and GitHub Pages instructions
 
-The paper link is intentionally omitted until the arXiv URL is available.
+Paper: <https://arxiv.org/abs/2608.08787>
 
 ## Audio behavior
 
